@@ -20,7 +20,7 @@ export default <Loader<void>>function ({ container }) {
       const name = formatRegistrationName(fn);
       const repository = asFunction((cradle) => new loaded(cradle));
       container.register({
-        [name]: repository.scoped(),
+        [name]: repository.singleton(),
       });
     }
   });

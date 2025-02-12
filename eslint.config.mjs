@@ -86,4 +86,10 @@ export default [
       'simple-import-sort/exports': 'error',
     },
   },
+  {
+    files: ['**/*.repository.ts'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'off',
+    },
+  },
 ];
