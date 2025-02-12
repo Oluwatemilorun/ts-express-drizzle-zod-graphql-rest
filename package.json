@@ -1,0 +1,49 @@
+{
+  "name": "ts-drizzle-gql",
+  "version": "0.1.0",
+  "description": "Starter template for Typescript, Drizzle ORM and GraphQL using ExpressJS",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint '*/**/*.{js,ts,tsx}' .gitignore .",
+    "lintfix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix ."
+  },
+  "keywords": [
+    "typescript",
+    "drizzle",
+    "postgres",
+    "graphql",
+    "express",
+    "ddd architecture"
+  ],
+  "author": "Isaac Oluwatemilorun <mail@temilorun.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.3",
+    "@types/glob": "^8.1.0",
+    "@types/pg": "^8.11.11",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "drizzle-kit": "^0.30.4",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.10",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "awilix": "^12.0.4",
+    "command-line-args": "^6.0.1",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.39.2",
+    "glob": "7.1.6",
+    "pg": "^8.13.1",
+    "ulid": "^2.3.0"
+  }
+}

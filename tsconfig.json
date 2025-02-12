@@ -1,0 +1,44 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"module": "commonjs",
+		"outDir": "dist",
+		"removeComments": true,
+		"sourceMap": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"forceConsistentCasingInFileNames": true,
+		"target": "es2018",
+		"lib": ["es2018", "esnext.asynciterable"],
+		"moduleResolution": "node",
+		"paths": {
+			"@core/*": [
+				"src/core/*"
+			],
+			"@modules/*": [
+				"src/modules/*"
+			],
+			"@shared/*": [
+				"src/shared/*"
+			],
+			"@/*": [
+				"src/*"
+			],
+		},
+	},
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"spec/**/*.ts",
+		"src/index",
+		"./eslint.config.mjs"
+	],
+	"exclude": [
+		"node_modules",
+		"node_modules/**/*.d.ts"
+	]
+}
