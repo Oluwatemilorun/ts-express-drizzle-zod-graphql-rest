@@ -26,7 +26,12 @@ export const User = orm.pgTable(
     // Indexes
     orm.index('user_created_idx').on(table.createdAt),
     orm.uniqueIndex('user_phone_idx').on(table.phone),
-    orm.uniqueIndex('user_email_gin_idx').using('gin', table.email),
+    // Used for faster like '%string%' queries
+    // For this to work, you need to have the `gin_trgm_ops` extension installed.
+    // To install it, `\c` to the database and run `create extension pg_trgm with schema pg_catalog;`.
+    // See https://github.com/PostgresApp/PostgresApp/issues/335 and https://orm.drizzle.team/docs/extensions/pg#indexes
+    // An example usage can be found in `UserRepository.getByEmail`
+    orm.index('user_email_gin_idx').using('gin', table.email.op('gin_trgm_ops')),
 
     // Relations
   ],
