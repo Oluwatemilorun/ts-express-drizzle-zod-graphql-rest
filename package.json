@@ -4,6 +4,7 @@
   "description": "Starter template for Typescript, Drizzle ORM and GraphQL using ExpressJS",
   "main": "index.js",
   "scripts": {
+    "db:generate-migrations": "drizzle-kit generate --config=src/core/infrastructure/database/migrations",
     "lint": "eslint '*/**/*.{js,ts,tsx}' .gitignore .",
     "lintfix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix ."
   },
