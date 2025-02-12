@@ -1,6 +1,7 @@
 import { asValue } from 'awilix';
 
 import { createDatabaseConnection, runMigrations } from '@core/infrastructure/database';
+import logger from '@shared/logger';
 import { Loader } from '@shared/types';
 
 export default <Loader<void, { models: Record<string, unknown> }>>(
@@ -8,9 +9,9 @@ export default <Loader<void, { models: Record<string, unknown> }>>(
     const db = createDatabaseConnection(models);
 
     runMigrations(db)
-      .then(() => console.log('Migration generated'))
+      .then(() => logger.info('Database migration completed'))
       .catch((err) => {
-        console.error(err);
+        logger.error(err);
         throw err;
       });
 
