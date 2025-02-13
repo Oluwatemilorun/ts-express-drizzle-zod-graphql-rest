@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon --config nodemon.json",
     "db:generate-migrations": "drizzle-kit generate --config=src/core/infrastructure/database/migrations",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' .gitignore .",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' .",
     "lintfix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix ."
   },
   "keywords": [

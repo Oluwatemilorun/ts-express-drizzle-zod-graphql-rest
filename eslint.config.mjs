@@ -18,54 +18,28 @@ const compat = new FlatCompat({
 });
 
 export default [
+  // Ignores
+  {
+    ignores: ['node_modules', 'dist', 'build'],
+  },
+
+  // Extends
   ...compat.extends(
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ),
+
+  // General
   {
     plugins: {
       'unused-imports': unusedImports,
-      '@typescript-eslint': typescriptEslint,
       'simple-import-sort': simpleImportSort,
     },
-
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        project: ['./tsconfig.json', './tsconfig.prod.json'],
-        tsconfigRootDir: __dirname,
-      },
-    },
-
-    ignores: ['node_modules', 'dist', 'build'],
 
     rules: {
       semi: ['error', 'always'],
       'no-console': 'warn',
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/explicit-function-return-type': 'warn',
-      '@typescript-eslint/no-inferrable-types': 'off',
-      '@typescript-eslint/no-var-requires': 0,
-
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
-      ],
-
       'unused-imports/no-unused-imports': 'error',
-
       'simple-import-sort/imports': [
         'error',
         {
@@ -86,6 +60,49 @@ export default [
       'simple-import-sort/exports': 'error',
     },
   },
+
+  // Typescript specifics
+  {
+    files: ['**/*.ts'],
+
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
+
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: ['./tsconfig.json', './tsconfig.prod.json'],
+        tsconfigRootDir: __dirname,
+      },
+    },
+
+    rules: {
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/no-var-requires': 0,
+
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
+
+  // Overrides
   {
     files: ['**/*.repository.ts'],
     rules: {
