@@ -5,13 +5,13 @@ import logger from '@shared/logger';
 import { Loader } from '@shared/types';
 
 export default <Loader<void, { models: Record<string, unknown> }>>(
-  function ({ container, models }) {
+  async function ({ container, models }) {
     const db = createDatabaseConnection(models);
 
-    runMigrations(db)
+    await runMigrations(db)
       .then(() => logger.info('Database migration completed'))
       .catch((err) => {
-        logger.error(err);
+        logger.error('Database migration failed');
         throw err;
       });
 

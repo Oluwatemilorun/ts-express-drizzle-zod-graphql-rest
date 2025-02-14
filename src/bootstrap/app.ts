@@ -31,7 +31,8 @@ export const StartApp = async (): Promise<void> => {
             process.exit(0);
           })
           .catch((e) => {
-            logger.error('Error received when shutting down the server.', e);
+            logger.error('Error received when shutting down the server.');
+            logger.error(e);
             process.exit(1);
           });
       };
@@ -39,7 +40,8 @@ export const StartApp = async (): Promise<void> => {
       process.on('SIGTERM', gracefulShutDown);
       process.on('SIGINT', gracefulShutDown);
     } catch (err) {
-      logger.error('Error starting server', err);
+      logger.error(err as Error);
+      logger.error('Error starting server');
       process.exit(1);
     }
   }
