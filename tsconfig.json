@@ -5,6 +5,7 @@
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"importHelpers": true,
+		"resolveJsonModule": true,
 		"module": "commonjs",
 		"outDir": "dist",
 		"removeComments": true,
@@ -35,6 +36,8 @@
 		"src/**/*.d.ts",
 		"spec/**/*.ts",
 		"src/index",
+		"src/**/*.json",
+		"src/**/*.sql",
 		"./eslint.config.mjs"
 	],
 	"exclude": [

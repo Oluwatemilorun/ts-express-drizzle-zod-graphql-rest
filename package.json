@@ -4,7 +4,10 @@
   "description": "Starter template for Typescript, Drizzle ORM and GraphQL using ExpressJS",
   "main": "index.js",
   "scripts": {
+    "build": "shx rm -rf ./dist && tsc --build tsconfig.prod.json && tsc-alias && shx cp -r ./src/core/infrastructure/database/migrations/*.sql ./dist/core/infrastructure/database/migrations",
+    "start": "node ./dist",
     "start:dev": "nodemon --config nodemon.json",
+    "start:staging": "node ./dist --env staging",
     "db:generate-migrations": "drizzle-kit generate --config=src/core/infrastructure/database/migrations",
     "lint": "eslint '*/**/*.{js,ts,tsx}' .",
     "lintfix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix ."
@@ -39,6 +42,7 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
