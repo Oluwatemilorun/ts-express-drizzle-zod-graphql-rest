@@ -12,15 +12,9 @@ import { Config } from '@core/config';
 import Constants from '@shared/constants';
 import logger from '@shared/logger';
 
-type F<T = any> = (...args: any[]) => T;
-type FunctionWithProps = F & Record<string, unknown>;
+import { F, FunctionWithProps } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare namespace Express {
-  export interface Request {
-    scope: unknown;
-  }
-}
+export * from './types';
 
 const last = <T>(arr: T[] = []): T => arr[arr.length - 1];
 const noop = Function.prototype;
