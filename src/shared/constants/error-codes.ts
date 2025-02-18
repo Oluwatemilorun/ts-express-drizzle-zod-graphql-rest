@@ -11,4 +11,10 @@ export const errorCodes = {
   PERMISSION_DENIED: 'PERMISSION_DENIED',
   /** Can not perform operation because of incomplete requirements. */
   FORBIDDEN: 'FORBIDDEN',
+  /** Invalid user input */
+  BAD_USER_INPUT: 'BAD_USER_INPUT',
+  /** An error occurred before your server could attempt to parse operation */
+  BAD_REQUEST: 'BAD_REQUEST',
+  /** An unspecified error occurred. */
+  INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR',
 } as const;
