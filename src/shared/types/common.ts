@@ -1,5 +1,7 @@
-export type ClassConstructor<T> = {
-  new (...args: unknown[]): T;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ClassConstructor<T = any> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  new (...args: any[]): T;
 };
 
 /**
@@ -447,3 +449,8 @@ export type TransformObjectMethodToAsync<T extends object> = {
       ? TransformObjectMethodToAsync<T[K]>
       : T[K];
 };
+
+export type Suffixed<
+  Suffix extends string,
+  S extends string,
+> = S extends `${string}${Suffix}` ? S : `${S}${Suffix}`;
