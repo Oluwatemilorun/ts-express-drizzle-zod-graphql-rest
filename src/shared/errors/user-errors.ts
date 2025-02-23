@@ -31,3 +31,13 @@ export class MaxQueryReached extends ApplicationError {
     });
   }
 }
+
+export class BadRequestError extends ApplicationError {
+  errors: Record<string, unknown>;
+
+  constructor(message: string, errors: Record<string, unknown>) {
+    super({ message, code: 'BAD_REQUEST' });
+
+    this.errors = errors;
+  }
+}
