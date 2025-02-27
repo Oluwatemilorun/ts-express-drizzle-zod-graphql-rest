@@ -1,20 +1,28 @@
 import { asValue } from 'awilix';
+import path from 'path';
 
-import { createDatabaseConnection, runMigrations } from '@core/infrastructure/database';
+import {
+  createDatabaseConnection,
+  Database,
+  loadModelsFromPath,
+  runMigrations,
+} from '@core/infrastructure/database';
 import logger from '@shared/logger';
 import { Loader } from '@shared/types';
 
-export default <Loader<void, { models: Record<string, unknown> }>>(
-  async function ({ container, models }) {
-    const db = createDatabaseConnection(models);
+export default <Loader<Database>>async function ({ container }) {
+  const modelsPath = path.join(__dirname, '../../modules/**/*.model.{ts,js}');
+  const models = loadModelsFromPath(modelsPath);
+  const db = createDatabaseConnection(models);
 
-    await runMigrations(db)
-      .then(() => logger.info('Database migration completed'))
-      .catch((err) => {
-        logger.error('Database migration failed');
-        throw err;
-      });
+  await runMigrations(db)
+    .then(() => logger.info('Database migration completed'))
+    .catch((err) => {
+      logger.error('Database migration failed');
+      throw err;
+    });
 
-    container.register({ database: asValue(db) });
-  }
-);
+  container.register({ database: asValue(db) });
+
+  return db;
+};
