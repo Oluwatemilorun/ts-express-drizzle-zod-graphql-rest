@@ -9,8 +9,8 @@
     "start:dev": "nodemon --config nodemon.json",
     "start:staging": "node ./dist --env staging",
     "db:generate-migrations": "drizzle-kit generate --config=src/core/infrastructure/database/migrations",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' .",
-    "lintfix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix ."
+    "lint": "eslint '*/**/*.{js,ts}' .",
+    "lintfix": "eslint '*/**/*.{js,ts}' --quiet --fix ."
   },
   "keywords": [
     "typescript",
@@ -57,8 +57,9 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "drizzle-graphql": "^0.8.5",
+    "drizzle-graphql": "github:Oluwatemilorun/drizzle-graphql#build",
     "drizzle-orm": "^0.39.2",
+    "drizzle-zod": "^0.7.0",
     "express": "^4.21.2",
     "express-ping": "^1.4.0",
     "glob": "7.1.6",
@@ -71,6 +72,7 @@
     "rate-limiter-flexible": "^5.0.5",
     "request-ip": "^3.3.0",
     "ulid": "^2.3.0",
-    "winston": "^3.17.0"
+    "winston": "^3.17.0",
+    "zod": "^3.24.2"
   }
 }

@@ -1,3 +1,4 @@
+import { appConfig } from './app-config';
 import { errorCodes } from './error-codes';
 import { otpConfig } from './otp-config';
 import { rateLimitConfig } from './rate-limit-config';
@@ -15,11 +16,14 @@ export const OTP_CONFIG = otpConfig;
 /** The configurations for setting up rate limiting */
 export const RATE_LIMIT_CONFIG = rateLimitConfig;
 
+export const APP_CONFIG = appConfig;
+
 const Constants = {
   REQUEST_ATTRIBUTES,
   ERROR_CODES,
   OTP_CONFIG,
   RATE_LIMIT_CONFIG,
+  APP_CONFIG,
 } as const;
 
 export default Constants;

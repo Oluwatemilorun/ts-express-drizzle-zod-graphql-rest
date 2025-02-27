@@ -14,7 +14,7 @@ export const StartApp = async (): Promise<void> => {
     const app = CreateExpressServer();
 
     try {
-      const { container } = await loaders();
+      const { container } = await loaders(app);
       const port = Number(Config.PORT);
 
       const server = GracefulShutdownServer.create(

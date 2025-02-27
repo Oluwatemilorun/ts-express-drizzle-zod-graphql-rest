@@ -3,6 +3,8 @@ import { AwilixContainer } from 'awilix';
 export enum ContainerStore {
   DB_ENTITIES = 'DB_ENTITIES',
   RESOLVERS = 'RESOLVERS',
+  GQL_ENTITY_TYPES = 'GQL_ENTITY_TYPES',
+  INPUTS = 'INPUTS',
 }
 
 export type AppContainer = AwilixContainer & {

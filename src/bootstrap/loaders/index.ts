@@ -1,17 +1,22 @@
 import { createAppContainer } from '@core/utils';
-import { AppContainer } from '@shared/types';
+import { AppContainer, Express } from '@shared/types';
 
 import databaseLoader from './database.loader';
+import graphqlServerLoader from './graphql-server.loader';
 import repositoriesLoader from './repositories.loader';
 
-export default async (): Promise<{
+export default async (
+  app: Express,
+): Promise<{
   container: AppContainer;
 }> => {
   const container = createAppContainer();
 
-  await databaseLoader({ container });
+  const db = await databaseLoader({ container });
 
   await repositoriesLoader({ container });
+
+  await graphqlServerLoader({ app, container, db });
 
   return { container };
 };
