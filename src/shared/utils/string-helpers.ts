@@ -36,3 +36,16 @@ export function withSuffix<S extends string>(suffix: S) {
     return (input + suffix) as Suffixed<S, I>;
   };
 }
+
+/**
+ * Converts string into camelCase.
+ *
+ * @see http://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
+ */
+export function toCamelCase(str: string, firstCapital = false): string {
+  if (firstCapital) str = ' ' + str;
+  return str.replace(/^([A-Z])|[\s-_](\w)/g, function (match, p1, p2) {
+    if (p2) return p2.toUpperCase();
+    return p1.toLowerCase();
+  });
+}
