@@ -2,6 +2,8 @@ import commandLineArgs from 'command-line-args';
 
 import { CommandOptionDefinition } from '@shared/types';
 
+import _generateGqlSchema from './generate-schema';
+
 function createCliCommand<T extends Record<string, unknown>>({
   args,
   run,
@@ -31,5 +33,12 @@ export const helloWorld = createCliCommand({
     const message = opts.uppercase ? 'HELLO WORLD' : 'hello world';
     // eslint-disable-next-line no-console
     console.log(message);
+  },
+});
+
+export const generateGqlSchema = createCliCommand({
+  args: [{ name: 'output', alias: 'o', type: String, defaultValue: './schema.graphql' }],
+  run: (opts: { output: string }) => {
+    _generateGqlSchema(opts.output);
   },
 });
