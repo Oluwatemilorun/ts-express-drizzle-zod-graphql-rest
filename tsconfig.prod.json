@@ -6,6 +6,7 @@
 	},
 	"exclude": [
 		"spec",
+		"tools/**/*.ts",
 		"src/**/*.mock.ts",
 		"src/public/"
 	]

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "shx rm -rf ./dist && tsc --build tsconfig.prod.json && tsc-alias && shx cp -r ./src/core/infrastructure/database/migrations/*.sql ./dist/core/infrastructure/database/migrations",
+    "cli": "ts-node -r tsconfig-paths/register ./tools/cli",
     "start": "node ./dist",
     "start:dev": "nodemon --config nodemon.json",
     "start:staging": "node ./dist --env staging",

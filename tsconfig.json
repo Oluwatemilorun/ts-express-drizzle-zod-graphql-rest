@@ -38,6 +38,7 @@
 		"src/index",
 		"src/**/*.json",
 		"src/**/*.sql",
+		"tools/**/*.ts",
 		"./eslint.config.mjs"
 	],
 	"exclude": [
