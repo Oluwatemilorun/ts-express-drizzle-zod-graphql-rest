@@ -23,3 +23,5 @@ export const CreateUserInput = createInsertInputFromSchema(User, {
     password: true,
   })
   .describe('Used when creating a new user');
+
+export type CreateUserInput = z.infer<typeof CreateUserInput>;

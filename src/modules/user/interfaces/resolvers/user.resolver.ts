@@ -35,7 +35,7 @@ export const testResolver = CreateQueryResolver(
   },
 );
 
-export const createUser = CreateMutationResolver(
+export const createUser = CreateMutationResolver<{ user: CreateUserInput }, unknown>(
   ({ entities }) => ({
     type: getGqlScalarType('String'),
     args: {
@@ -59,7 +59,9 @@ export const createUser = CreateMutationResolver(
       },
     },
   }),
-  async () => {
+  async ({ args }) => {
+    // eslint-disable-next-line no-console
+    console.log(args.user);
     return 'Created';
   },
 );
