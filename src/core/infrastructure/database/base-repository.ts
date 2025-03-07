@@ -3,6 +3,8 @@ import { DBQueryConfig, TableRelationalConfig } from 'drizzle-orm';
 import { NodePgClient, NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { RelationalQueryBuilder } from 'drizzle-orm/pg-core/query-builders/query';
 
+import { Transaction } from './types';
+
 export class BaseRepository<M extends TableRelationalConfig> {
   protected _db: NodePgDatabase<{ table: M }> & {
     $client: NodePgClient;
@@ -25,5 +27,16 @@ export class BaseRepository<M extends TableRelationalConfig> {
     return await (
       (this._db.query as any).schema as RelationalQueryBuilder<{ table: M }, M>
     ).findMany(config);
+  }
+
+  withTransaction(tx: Transaction): this {
+    const cloned = new (this.constructor as any)(
+      this.__container__,
+      this.__moduleDeclaration__,
+    );
+
+    cloned._db = tx;
+
+    return cloned;
   }
 }
