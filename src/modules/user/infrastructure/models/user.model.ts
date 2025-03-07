@@ -36,3 +36,5 @@ export const User = orm.pgTable(
     // Relations
   ],
 );
+
+export type User = typeof User.$inferInsert;

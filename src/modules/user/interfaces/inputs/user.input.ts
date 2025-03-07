@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { createInsertInputFromSchema } from '@core/infrastructure/database';
 
-import { User } from '../../infrastructure/models';
+import { User } from '../../infrastructure';
 
 export const CreateUserInput = createInsertInputFromSchema(User, {
   email: (z) => z.email().describe('The email of the user'),
@@ -17,10 +17,10 @@ export const CreateUserInput = createInsertInputFromSchema(User, {
     }),
   })
   .pick({
-    id: true,
     firstName: true,
     email: true,
     password: true,
+    phone: true,
   })
   .describe('Used when creating a new user');
 

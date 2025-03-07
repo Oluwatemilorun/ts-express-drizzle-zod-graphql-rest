@@ -11,7 +11,7 @@ import {
   getGqlScalarType,
 } from '@core/interfaces/gql';
 
-import { User, UserType } from '../../infrastructure/models';
+import { User, UserService, UserType } from '../../infrastructure';
 import { CreateUserInput } from '../inputs/user.input';
 
 export const getAllUsers = CreateQueryResolver(
@@ -37,7 +37,7 @@ export const testResolver = CreateQueryResolver(
 
 export const createUser = CreateMutationResolver<{ user: CreateUserInput }, unknown>(
   ({ entities }) => ({
-    type: getGqlScalarType('String'),
+    type: getGqlTypeNameFromSchema({ User }),
     args: {
       user: {
         type: CreateGqlInputFromSchema(
@@ -59,9 +59,7 @@ export const createUser = CreateMutationResolver<{ user: CreateUserInput }, unkn
       },
     },
   }),
-  async ({ args }) => {
-    // eslint-disable-next-line no-console
-    console.log(args.user);
-    return 'Created';
+  async ({ args, ctx }) => {
+    return ctx.scope.resolve<UserService>('userService').createUser(args.user);
   },
 );

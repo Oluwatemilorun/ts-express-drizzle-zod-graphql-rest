@@ -4,7 +4,7 @@ import { buildRelations, buildSelect } from '@shared/utils';
 
 import { User } from '../models';
 
-export default class UserRepository extends BaseRepository<Schema<typeof User>> {
+export class UserRepository extends BaseRepository<Schema<typeof User>> {
   constructor() {
     // eslint-disable-next-line prefer-rest-params
     super(arguments[0]);
@@ -59,3 +59,5 @@ export default class UserRepository extends BaseRepository<Schema<typeof User>> 
     });
   }
 }
+
+export default UserRepository;
