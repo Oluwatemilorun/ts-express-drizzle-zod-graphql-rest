@@ -99,7 +99,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default {
-  ...logger,
+  warn: logger.warn,
+  http: logger.http,
+  verbose: logger.verbose,
+  debug: logger.debug,
+  silly: logger.silly,
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   info: (message: string) => logger.log({ level: 'info', message }),
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
