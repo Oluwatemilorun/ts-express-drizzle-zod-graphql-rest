@@ -4,11 +4,12 @@ import path from 'path';
 import { databaseUrl } from '../config';
 
 const schemaGlob = '/src/modules/**/*.model.{ts,js}';
+const migrationsDir = path.join('./src', __dirname.split('src')[1], './');
 
 export default defineConfig({
   dialect: 'postgresql',
   schema: process.cwd() + schemaGlob,
-  out: path.join(__dirname, '.'),
+  out: migrationsDir,
   casing: 'snake_case',
   dbCredentials: {
     url: databaseUrl,
