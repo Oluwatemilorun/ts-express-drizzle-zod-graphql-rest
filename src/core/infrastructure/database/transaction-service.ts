@@ -6,7 +6,7 @@ import { IsolationLevel, Transaction } from './types';
 
 type Database = PgDatabase<NodePgQueryResultHKT>;
 
-export class BaseService {
+export class TransactionService {
   static readonly __LIFETIME__: LifetimeType = 'SCOPED';
 
   protected _db: Database;

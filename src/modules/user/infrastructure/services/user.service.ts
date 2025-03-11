@@ -1,4 +1,4 @@
-import { BaseService } from '@core/infrastructure/database';
+import { BaseService } from '@core/application';
 
 import { User } from '../models';
 import { UserRepository } from '../repositories';
