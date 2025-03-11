@@ -5,7 +5,7 @@ import { Session } from '../models';
 export default class SessionRepository extends BaseRepository<Schema<typeof Session>> {
   constructor() {
     // eslint-disable-next-line prefer-rest-params
-    super(arguments[0]);
+    super(arguments[0], 'Session');
   }
 
   async getActiveSessions() {

@@ -7,7 +7,7 @@ import { User } from '../models';
 export class UserRepository extends BaseRepository<Schema<typeof User>> {
   constructor() {
     // eslint-disable-next-line prefer-rest-params
-    super(arguments[0]);
+    super(arguments[0], 'User');
   }
 
   async create(
