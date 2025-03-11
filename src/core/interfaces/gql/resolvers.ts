@@ -135,13 +135,13 @@ export function CreateMutationResolver<
       resolverType: 'mutation',
       type,
       ...opts,
-      resolve: (_, args, ctx, info): TReturn | Promise<TReturn> => {
+      resolve: async (_, args, ctx, info): Promise<TReturn> => {
         try {
           if (args) {
             validateArgsValues(args, argsToValidatorMap);
           }
 
-          return resolve({ args, ctx, info });
+          return await resolve({ args, ctx, info });
         } catch (error) {
           const [message, extensions] = handleError(error);
           throw new GraphQLError(message, { extensions });
