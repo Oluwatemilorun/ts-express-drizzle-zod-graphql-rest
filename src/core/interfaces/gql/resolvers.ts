@@ -138,7 +138,7 @@ export function CreateMutationResolver<
       resolve: async (_, args, ctx, info): Promise<TReturn> => {
         try {
           if (args) {
-            validateArgsValues(args, argsToValidatorMap);
+            args = validateArgsValues(args, argsToValidatorMap);
           }
 
           return await resolve({ args, ctx, info });

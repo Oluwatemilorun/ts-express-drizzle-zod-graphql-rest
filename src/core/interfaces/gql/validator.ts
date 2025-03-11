@@ -21,8 +21,12 @@ export function mapArgsToValidator(
   return argsToInputMap;
 }
 
-export function validateArgsValues(args: object, argsToValidatorMap: InputsObject): void {
+export function validateArgsValues<TArgs extends object = object>(
+  args: TArgs,
+  argsToValidatorMap: InputsObject,
+): TArgs {
   const errors = {} as Record<string, unknown>;
+  const cleanedArgs = {} as Record<string, unknown>;
 
   for (const [argName, value] of Object.entries(args)) {
     const validator = argsToValidatorMap[argName];
@@ -32,6 +36,8 @@ export function validateArgsValues(args: object, argsToValidatorMap: InputsObjec
 
       if (!result.success) {
         errors[argName] = result.error.format();
+      } else {
+        cleanedArgs[argName] = result.data;
       }
     }
   }
@@ -39,4 +45,6 @@ export function validateArgsValues(args: object, argsToValidatorMap: InputsObjec
   if (Object.keys(errors).length > 0) {
     throw new BadRequestError('Argument Validation Error', errors);
   }
+
+  return cleanedArgs as TArgs;
 }
