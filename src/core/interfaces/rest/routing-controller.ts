@@ -51,6 +51,32 @@ function requestHandler(
   };
 }
 
+/**
+ * Creates a new routing controller that can
+ *
+ * @example
+ * export const userController = createRoutingController('/users', {
+ *  '/': ({ controller }) => ({
+ *    get: controller({
+ *      query: FilterQuery, // zod validation schema
+ *      handler: async ({ query, ctx }) => {
+ *        return ctx.scope.resolve<UserService>('userService').getAll(query);
+ *      },
+ *    }),
+ *    post: controller({
+ *      body: CreateUserInput, // zod validation schema
+ *      handler: async ({ body, ctx }) => {
+ *        return ctx.scope.resolve<UserService>('userService').create(body);
+ *      },
+ *    }),
+ *  }),
+ * });
+ * @param controllerRoute the base route of the controller
+ * @param routesConfig an object defining the sub routes for the controller
+ * @returns a router setup function that accepts a
+ * base {@link Router} the controller routes will be added to, and
+ * a DI {@link AppContainer} for context injection and scope setup
+ */
 export function createRoutingController<TConfig extends RouteConfig = RouteConfig>(
   controllerRoute: string,
   routesConfig: Record<
