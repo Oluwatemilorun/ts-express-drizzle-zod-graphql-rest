@@ -25,3 +25,11 @@ export const CreateUserInput = createInsertInputFromSchema(User, {
   .describe('Used when creating a new user');
 
 export type CreateUserInput = z.infer<typeof CreateUserInput>;
+
+export const FilterUserInput = z.object({
+  active: z.boolean().optional(),
+});
+
+export const GetSingleUserInput = z.object({
+  id: z.string(),
+});

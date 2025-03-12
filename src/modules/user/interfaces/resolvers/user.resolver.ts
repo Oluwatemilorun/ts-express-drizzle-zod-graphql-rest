@@ -11,8 +11,8 @@ import {
   getGqlScalarType,
 } from '@core/interfaces/gql';
 
-import { User, UserService, UserType } from '../../infrastructure';
-import { CreateUserInput } from '../inputs/user.input';
+import { CreateUserInput, UserService } from '../../application';
+import { User, UserType } from '../../infrastructure';
 
 export const getAllUsers = CreateQueryResolver(
   {

@@ -1,6 +1,6 @@
 import { AppContainer } from './container';
 
-export interface ApolloContext<User = object> {
+export interface AppContext<User = object> {
   remoteAddress: string;
   scope: AppContainer;
   // sentryScope: SentryScope;
@@ -8,3 +8,5 @@ export interface ApolloContext<User = object> {
   user?: User;
   admin?: User;
 }
+
+export type ApolloContext<ContextUser = object> = AppContext<ContextUser>;

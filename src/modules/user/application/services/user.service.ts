@@ -1,7 +1,6 @@
 import { BaseService } from '@core/application';
 
-import { User } from '../models';
-import { UserRepository } from '../repositories';
+import { User, UserRepository } from '../../infrastructure';
 
 interface InjectedDependencies {
   userRepository: UserRepository;

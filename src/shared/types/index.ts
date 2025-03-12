@@ -1,4 +1,4 @@
-export * from './apollo';
+export * from './contexts';
 export * from './camel-case';
 export * from './cli';
 export * from './common';

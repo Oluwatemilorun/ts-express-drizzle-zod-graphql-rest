@@ -4,6 +4,7 @@ import { AppContainer, Express } from '@shared/types';
 import databaseLoader from './database.loader';
 import graphqlServerLoader from './graphql-server.loader';
 import repositoriesLoader from './repositories.loader';
+import routingControllersLoader from './routing-controllers.loader';
 import servicesLoader from './services.loader';
 
 export default async (
@@ -20,6 +21,8 @@ export default async (
   await servicesLoader({ container });
 
   await graphqlServerLoader({ app, container, db });
+
+  await routingControllersLoader({ app, container });
 
   return { container };
 };
